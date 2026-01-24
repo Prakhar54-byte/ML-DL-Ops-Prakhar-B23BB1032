@@ -56,8 +56,6 @@ Adam optimizer consistently outperformed SGD across both datasets due to adaptiv
 | **FashionMNIST** | Poly | C=10, degree=2 | 86.80 | 6729.06 |
 | **FashionMNIST** | RBF | C=5, gamma=scale | 87.45 | 6820.15 |
 
-### 🔍 Analysis (Q1b)
-SVM achieved higher accuracy on MNIST than FashionMNIST due to simpler digit patterns. RBF kernel performed best overall, especially on FashionMNIST. Polynomial kernels provided competitive accuracy with slightly lower training time. Increasing C generally improved performance.
 
 ---
 
