@@ -8,7 +8,7 @@
 ## 📝 Project Overview
 This repository contains the experiments for Assignment 1 of the DLOPs course. The objective is to analyze the performance of Deep Learning models (ResNet) and Machine Learning models (SVM) on MNIST and FashionMNIST datasets under various constraints (CPU vs GPU, Hyperparameter tuning).
 
-**🔗 Colab Notebook Link:** https://colab.research.google.com/drive/1phC0UhzqrKJ_swj5Jz_fhyyYDIrgTUuW?usp=sharing
+**🔗 Colab Notebook Link:** https://colab.research.google.com/drive/1phC0UhzqrKJ_swj5Jz_fhyyYDIrgTUuW?usp=sharing 
 > *Note: Experiments were performed using PyTorch with Automatic Mixed Precision (AMP) enabled.*
 
 ---
@@ -73,6 +73,6 @@ SVM achieved higher accuracy on MNIST than FashionMNIST due to simpler digit pat
 | **GPU** | 16 | Adam | 0.001 | 92.04 | 533,329 | 0.03G | 91.90 | 1,663,071 | 0.08G |
 
 ### 💻 System Analysis (Q2)
-GPU training provides a significant speedup of approximately **7–8×** compared to CPU across all models. While FLOPs remain constant for a given architecture, GPU acceleration drastically reduces wall-clock training time. Deeper models such as ResNet-50 require substantially more computation, but provide only modest accuracy gains. These results highlight the importance of GPU acceleration for efficient deep learning experimentation.
+GPU training provides a significant speedup of approximately **7–8×** compared to CPU across all models. While FLOPs remain constant for a given architecture, GPU acceleration drastically reduces wall-clock training time. Deeper models such as ResNet-50 require substantially more computation, but provide only modest accuracy gains.
 
 ---
