@@ -8,7 +8,7 @@
 ## 📝 Project Overview
 This repository contains the experiments for Assignment 1 of the DLOPs course. The objective is to analyze the performance of Deep Learning models (ResNet) and Machine Learning models (SVM) on MNIST and FashionMNIST datasets under various constraints (CPU vs GPU, Hyperparameter tuning).
 
-**🔗 Colab Notebook Link:** [PASTE YOUR COLAB LINK HERE]  
+**🔗 Colab Notebook Link:** https://colab.research.google.com/drive/1phC0UhzqrKJ_swj5Jz_fhyyYDIrgTUuW?usp=sharing
 > *Note: Experiments were performed using PyTorch with Automatic Mixed Precision (AMP) enabled.*
 
 ---
