@@ -1,0 +1,92 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# DATA CONTRACT: CityMove Ride-Share
+# Scenario 1: The "Ride-Share" Data Contract (Comprehensive)
+# ═══════════════════════════════════════════════════════════════════════════
+# NEGOTIATION SUMMARY
+# ───────────────────
+# Producer: Platform DB Team
+# Consumer: ML Pricing Team
+#
+# Trade-offs & Notes:
+# 1. Renaming: I mapped all the cryptic DB names (like 'ts_start') to readable 
+#    ones (like 'pickup_timestamp') as requested by the ML team.
+# 2. SLA: Agreed on 30 mins freshness because the model retrains every hour.
+# 3. PII: Passenger ID is marked as sensitive.
+# 4. CIRCUIT BREAKER: The 'fare' rule is set to HARD enforcement. 
+#    The prompt mentioned the $50k loss from a crash, so we cannot allow 
+#    negative values to pass. It must break the pipe.
+# ═══════════════════════════════════════════════════════════════════════════
+
+dataContractSpecification: 0.9.3
+id: urn:datacontract:citymove:rides-log
+version: 1.0.0
+
+info:
+  title: "Ride Share Transactions"
+  description: "Cleaned data stream for the Dynamic Pricing Model."
+  owner: "Platform Team"
+  classification: confidential
+  tags: [rides, pricing, pii]
+
+schema:
+  type: object
+  properties:
+    # Renamed from 'r_id'
+    ride_id:
+      type: string
+      description: "Unique ID for the ride."
+
+    # Renamed from 'ts_start' as requested
+    pickup_timestamp:
+      type: string
+      format: date-time
+      description: "Time the ride started."
+
+    # Renamed from 'pax_id' - flagging as PII
+    passenger_id:
+      type: integer
+      description: "Passenger ID (PII)."
+      pii: true 
+
+    # Renamed from 'd_rating'
+    driver_rating:
+      type: number
+      description: "Driver rating (1.0 - 5.0)."
+
+    # Renamed from 'fare_final'
+    fare_amount:
+      type: number
+      description: "Total cost in USD."
+
+    # Renamed from 'dist_m'
+    distance_meters:
+      type: integer
+      description: "Ride distance in meters."
+
+  required: [ride_id, pickup_timestamp, fare_amount, distance_meters]
+
+sla:
+  # SLA (Service Level Agreement): a contract that defines the expected level of service, performance metrics, and responsibilities between a service provider and a customer.
+  freshness:
+    threshold: "30 minutes"
+    description: "Must be fresh for hourly model retraining."
+
+quality:
+  # CIRCUIT BREAKER IMPLEMENTATION
+  # This satisfies the requirement to stop bad data (-5.00) from crashing the model.
+  - name: fare_must_be_positive
+    type: validity
+    expression: "fare_amount >= 0"
+    threshold: "100%"
+    enforcement: hard  
+    description: "Critical: Negative fares caused a crash last time. Hard block."
+
+  - name: rating_range
+    type: validity
+    expression: "driver_rating >= 1.0 AND driver_rating <= 5.0"
+    threshold: "100%"
+    
+  - name: distance_not_null
+    type: completeness
+    column: distance_meters
+    threshold: "100%"

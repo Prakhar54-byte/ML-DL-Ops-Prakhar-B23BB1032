@@ -1,0 +1,46 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# DATA CONTRACT: Flash Sale Orders
+# Scenario 2: The "Flash Sale" Order Stream (E-commerce)
+# ═══════════════════════════════════════════════════════════════════════════
+# Logic Notes:
+# - I mapped the status codes (2, 5, 9) to an Enum (PAID, SHIPPED, CANCELLED).
+# - Any other code (like the bugged '7') will fail the 'enum' check automatically.
+# ═══════════════════════════════════════════════════════════════════════════
+
+dataContractSpecification: 0.9.3
+id: urn:datacontract:ecommerce:orders
+version: 1.0.0
+
+info:
+  title: "Flash Sale Order Stream"
+  owner: "Checkout Team"
+
+schema:
+  type: object
+  properties:
+    # Renamed from 'o_total'
+    order_total:
+      type: number
+      description: "Order total in USD."
+
+    # Renamed from 'status_code' and converted to String Enum
+    status:
+      type: string
+      enum: [PAID, SHIPPED, CANCELLED]
+      description: "Mapped from codes: 2=PAID, 5=SHIPPED, 9=CANCELLED"
+
+  required: [order_total, status]
+
+quality:
+  - name: total_non_negative
+    type: validity
+    expression: "order_total >= 0"
+    threshold: "100%"
+    description: "Prevents negative order values."
+
+  - name: status_valid_enum
+    type: validity
+    expression: "status IN ('PAID', 'SHIPPED', 'CANCELLED')"
+    threshold: "100%"
+    enforcement: hard
+    description: "Reject any status code that isn't in our allowed list."

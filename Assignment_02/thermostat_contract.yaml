@@ -1,0 +1,56 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# DATA CONTRACT: Smart Thermostat Fleet
+# Scenario 3: The "Smart Thermostat" Fleet (IoT)
+# ═══════════════════════════════════════════════════════════════════════════
+# Context: Sensors are unreliable. We get 9999C when they break.
+# This contract filters those out so the 'Average Home Temp' report is accurate.
+# ═══════════════════════════════════════════════════════════════════════════
+
+dataContractSpecification: 0.9.3
+id: urn:datacontract:iot:thermostat-readings
+version: 2.0.0
+
+info:
+  title: "IoT Thermostat Telemetry"
+  description: "Minute-level temperature and battery readings from 10k devices."
+  owner: "IoT Device Team"
+  classification: internal
+  tags: [iot, sensors, time-series]
+
+schema:
+  type: object
+  properties:
+    device_id:
+      type: string
+      description: "Unique serial number of the thermostat."
+    
+    # Mapping 'temp_c' -> temperature_celsius
+    temperature_celsius:
+      type: number
+      description: "Ambient room temperature."
+      # Physical layer sends 9999 on error; logical layer rejects it.
+    
+    # Mapping 'batt_lvl' -> battery_percentage
+    battery_percentage:
+      type: number
+      description: "Battery remaining (0.0 to 1.0)."
+
+  required: [device_id, temperature_celsius, battery_percentage]
+
+quality:
+  # Rule 1: Temperature Range (Sanity Check)
+  # Rejects the 9999 error codes
+  - name: temp_sanity_check
+    type: validity
+    expression: "temperature_celsius >= -30 AND temperature_celsius <= 60"
+    threshold: "100%"
+    enforcement: soft # We might want to log these as errors but not stop the pipe
+    description: "Readings must be within Earth-normal bounds (-30 to 60)."
+
+  # Rule 2: Battery Physics Check
+  - name: battery_valid_range
+    type: validity
+    expression: "battery_percentage >= 0.0 AND battery_percentage <= 1.0"
+    threshold: "100%"
+    enforcement: soft
+    description: "Battery level is a percentage decimal between 0.0 and 1.0."

@@ -1,0 +1,55 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# DATA CONTRACT: FinTech Transaction Log
+# Scenario 4: The "FinTech" Transaction Log (Financial)
+# ═══════════════════════════════════════════════════════════════════════════
+# CRITICAL ALERT: The legacy system upgrade is sending 8-char IDs.
+# The fraud model fails silently on these. 
+# We are implementing a HARD CIRCUIT BREAKER to block any ID that isn't 
+# exactly 10 alphanumeric characters.
+# ═══════════════════════════════════════════════════════════════════════════
+
+dataContractSpecification: 0.9.3
+id: urn:datacontract:fintech:transactions
+version: 3.0.1
+
+info:
+  title: "Core Banking Transaction Log"
+  description: "Real-time stream of funds transfer for fraud analysis."
+  owner: "Core Banking Team"
+  classification: restricted
+  tags: [finance, fraud-detection, critical]
+
+schema:
+  type: object
+  properties:
+    # Mapping 'acct_src' -> source_account_id
+    source_account_id:
+      type: string
+      description: "ID of the sending account. Must be 10 chars, uppercase alphanumeric."
+      pattern: "^[A-Z0-9]{10}$" # Regex enforced at schema level
+    
+    # Mapping 'acct_dest' -> destination_account_id
+    destination_account_id:
+      type: string
+      description: "ID of the receiving account. Must be 10 chars, uppercase alphanumeric."
+      pattern: "^[A-Z0-9]{10}$" # Regex enforced at schema level
+    
+    transaction_timestamp:
+      type: string
+      format: date-time
+
+  required: [source_account_id, destination_account_id, transaction_timestamp]
+
+quality:
+  # Rule 1: Regex Pattern Matching
+  # Enforcing the 10-char requirement strictly.
+  - name: source_id_format_check
+    type: validity
+    # Regex: Start (^), A-Z or 0-9, exactly 10 times ({10}), End ($)
+    expression: "REGEXP_LIKE(source_account_id, '^[A-Z0-9]{10}$')"
+    threshold: "100%"
+    
+    # Rule 2: Hard Circuit Breaker
+    # As requested, this must block the pipeline to prevent silent model failure.
+    enforcement: hard 
+    description: "Hard Stop: Account ID must be exactly 10 uppercase alphanumerics."
