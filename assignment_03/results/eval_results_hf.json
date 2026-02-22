@@ -1,0 +1,10 @@
+{
+  "model_path": "Prakhar54-byte/distilbert-goodreads-genre-classifier",
+  "source": "hf",
+  "eval_loss": 1.2691131830215454,
+  "eval_accuracy": 0.608125,
+  "eval_precision": 0.6038071570963188,
+  "eval_recall": 0.608125,
+  "eval_f1": 0.6054234130765218,
+  "classification_report": "                        precision    recall  f1-score   support\n\n              children       0.62      0.66      0.64       200\n        comics_graphic       0.76      0.77      0.77       200\n    fantasy_paranormal       0.43      0.43      0.43       200\n     history_biography       0.59      0.60      0.60       200\nmystery_thriller_crime       0.60      0.62      0.61       200\n                poetry       0.78      0.81      0.79       200\n               romance       0.62      0.61      0.61       200\n           young_adult       0.43      0.36      0.39       200\n\n              accuracy                           0.61      1600\n             macro avg       0.60      0.61      0.61      1600\n          weighted avg       0.60      0.61      0.61      1600\n"
+}

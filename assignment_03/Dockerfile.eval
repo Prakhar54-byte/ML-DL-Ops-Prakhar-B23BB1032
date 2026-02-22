@@ -1,0 +1,23 @@
+
+FROM python:3.10-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends gcc && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copy and install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy source code (only what's needed for evaluation)
+COPY src/ ./src/
+
+# Create results directory
+RUN mkdir -p results
+
+# Default: evaluate using the model from HuggingFace Hub
+CMD ["python", "-m", "src.eval", "--model_path", "Prakhar54-byte/distilbert-goodreads-genre-classifier", "--source", "hf"]
