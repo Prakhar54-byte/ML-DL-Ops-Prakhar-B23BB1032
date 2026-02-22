@@ -10,8 +10,8 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Copy and install Python dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY requirements_B23BB1032.txt .
+RUN pip install --no-cache-dir -r requirements_B23BB1032.txt
 
 # Copy source code
 COPY src/ ./src/
