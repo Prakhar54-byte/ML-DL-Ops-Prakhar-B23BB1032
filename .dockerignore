@@ -1,0 +1,11 @@
+training_results/
+distilbert-goodreads-genre-classifier/
+eval_tmp/
+__pycache__/
+*.pickle
+*.pdf
+.git/
+.gitignore
+README*.md
+REPORT*.md
+results/
