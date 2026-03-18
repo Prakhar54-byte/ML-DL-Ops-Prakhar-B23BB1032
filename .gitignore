@@ -1,0 +1,19 @@
+# Models
+*.pth
+*.pt
+
+# Pickle
+*.pkl
+
+# Logs
+*.log
+
+# Notebooks output
+*.ipynb_checkpoints
+
+# Cache
+__pycache__/
+
+# Large datasets
+*.tsv
+x
