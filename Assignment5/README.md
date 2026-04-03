@@ -5,7 +5,7 @@
 
 > **GitHub Branch:** [Link to Assignment 5 Branch](https://github.com/Prakhar54-byte/ML-DL-Ops-Prakhar-B23BB1032/tree/Assignment_05)
 > **WandB Project:** [Link to Weights & Biases Dashboard](https://wandb.ai/b23bb1032-iit-jodhpur/assignment5-vit-lora?nw=nwuserb23bb1032)
-> **HuggingFace Model:** [Link to Best Q1 Model](https://huggingface.co/Prakhar54-byte/assignment5-vit-s-lora)
+> **HuggingFace Model:** [Link to Best Q1 Model]([https://huggingface.co/Prakhar54-byte/assignment5-vit-s-lora](https://huggingface.co/Prakhar54-byte/assignment5-vit-s-lora/tree/main))
 
 ---
 
@@ -210,4 +210,4 @@ Based on the binary detection accuracies, the ResNet-34 detector performance deg
 
 - **GitHub Branch:** [Link to Assignment 5 Branch](https://github.com/Prakhar54-byte/ML-DL-Ops-Prakhar-B23BB1032/tree/Assignment_05)
 - **WandB:** [Link to Weights & Biases Dashboard](https://wandb.ai/b23bb1032-iit-jodhpur/assignment5-vit-lora?nw=nwuserb23bb1032)
-- **HuggingFace:** [Link to Best Q1 Model](https://huggingface.co/Prakhar54-byte/assignment5-vit-s-lora)
+- **HuggingFace:** [Link to Best Q1 Model](https://huggingface.co/Prakhar54-byte/assignment5-vit-s-lora/tree/main)
