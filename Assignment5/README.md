@@ -4,8 +4,8 @@
 **Deadline:** 03/04/2026
 
 > **GitHub Branch:** [Link to Assignment 5 Branch](https://github.com/Prakhar54-byte/ML-DL-Ops-Prakhar-B23BB1032/tree/Assignment_05)
-> **WandB Project:** [Link to Weights & Biases Dashboard](https://wandb.ai/b23bb1032-iit-jodhpur/Assignmet_05/weave)
-> **HuggingFace Model:** [Link to Best Q1 Model](https://huggingface.co/YOUR_HF_USERNAME/MODEL_NAME)
+> **WandB Project:** [Link to Weights & Biases Dashboard](https://wandb.ai/b23bb1032-iit-jodhpur/assignment5-vit-lora?nw=nwuserb23bb1032)
+> **HuggingFace Model:** [Link to Best Q1 Model](https://huggingface.co/Prakhar54-byte/MODEL_NAME)
 
 ---
 
@@ -177,7 +177,7 @@ bash run_all.sh
 | Yes  | 4    | 4     | 0.1     | 89.97%        | 149,092          |
 | Yes  | 4    | 8     | 0.1     | 90.20%        | 149,092          |
 | Yes  | 8    | 2     | 0.1     | 89.96%        | 259,684          |
-| Yes  | 8    | 4     | 0.1     | %             | 259,684          |
+| Yes  | 8    | 4     | 0.1     | 90.09%        | 259,684          |
 | Yes  | 8    | 8     | 0.1     | %             | 259,684          |
 | **Best (Optuna)** | ? | ? | ? | % (Best)      | ?                |
 
@@ -198,8 +198,8 @@ bash run_all.sh
 
 | Attack | Detection Accuracy |
 |--------|--------------------|
-| PGD    | %                  |
-| BIM    | %                  |
+| PGD    | 50.30%             |
+| BIM    | 50.05%             |
 
 ### Analysis: PGD vs BIM Detection Difficulty
 *Insert your brief analysis here comparing the detection difficulties of PGD versus BIM attacks based on your accuracy observations...*
@@ -209,5 +209,5 @@ bash run_all.sh
 ## Links
 
 - **GitHub Branch:** [Link to Assignment 5 Branch](https://github.com/Prakhar54-byte/ML-DL-Ops-Prakhar-B23BB1032/tree/Assignment_05)
-- **WandB:** [Link to Weights & Biases Dashboard](https://wandb.ai/b23bb1032-iit-jodhpur/Assignmet_05/weave)
-- **HuggingFace:** [Link to Best Q1 Model](https://huggingface.co/YOUR_HF_USERNAME/MODEL_NAME)
+- **WandB:** [Link to Weights & Biases Dashboard](https://wandb.ai/b23bb1032-iit-jodhpur/assignment5-vit-lora?nw=nwuserb23bb1032)
+- **HuggingFace:** [Link to Best Q1 Model](https://huggingface.co/Prakhar54-byte/MODEL_NAME)
