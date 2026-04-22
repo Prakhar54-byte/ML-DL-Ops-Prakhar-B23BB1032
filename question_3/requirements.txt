@@ -1,0 +1,8 @@
+torch==1.10.2
+transformers==4.18.0
+datasets==1.18.0
+multiprocess==0.70.12.2
+accelerate==0.5.1
+sacremoses==0.0.53
+Pillow
+diffusers

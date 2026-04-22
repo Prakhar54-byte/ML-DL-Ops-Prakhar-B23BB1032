@@ -1,0 +1,21 @@
+# This is a comment
+
+# Ignore a specific file
+secret.txt
+
+# Ignore a specific folder and all its contents
+build/
+node_modules/
+
+# Ignore all files with a specific extension (e.g., all log files)
+*.log
+
+# Ignore a file type, but make an exception for a specific file
+*.log
+!important.log
+
+# Ignore files in a specific directory (but not subdirectories)
+logs/*.txt
+
+# Ignore a file anywhere in the project
+**/database.sqlite

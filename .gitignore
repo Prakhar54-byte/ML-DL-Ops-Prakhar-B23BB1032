@@ -1,0 +1,11 @@
+Miniconda3-latest-Linux-x86_64.sh
+*.sh
+*.sh
+*.zip
+*.tar.gz
+*.pt
+*.pth
+*.ckpt
+.env
+__pycache__/
+*.pyc

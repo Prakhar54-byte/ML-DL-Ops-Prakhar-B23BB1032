@@ -1,0 +1,7 @@
+torch
+transformers
+sentencepiece
+evaluate
+sacrebleu
+striprtf
+sacremoses

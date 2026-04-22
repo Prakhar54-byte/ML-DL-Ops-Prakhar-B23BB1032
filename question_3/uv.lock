@@ -1,0 +1,57 @@
+version = 1
+revision = 3
+requires-python = ">=3.6"
+resolution-markers = [
+    "python_full_version >= '3.8'",
+    "python_full_version == '3.7.*'",
+    "python_full_version < '3.7'",
+]
+
+[[package]]
+name = "pipe"
+version = "1.6.0"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version < '3.7'",
+]
+sdist = { url = "https://files.pythonhosted.org/packages/70/70/3ee82de58ebd57c88764037bff419b8f3f7963e329bbe8a9f5f7611463a9/pipe-1.6.0.tar.gz", hash = "sha256:9bec3a88f8829f5074507795bc633603d61c025c88069f4d865018c721c6aa31", size = 7622, upload-time = "2019-10-22T21:47:21.459Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/50/aa/2c7d8e1131d709d009deb9919c29ee8b1e1b2997034cbd4a440fddbf1d3e/pipe-1.6.0-py2.py3-none-any.whl", hash = "sha256:cb89e7c553d819e97fa912afaf592c2553fa7b92c047c47772b4a96ef59c8825", size = 6795, upload-time = "2019-10-22T21:47:19.638Z" },
+]
+
+[[package]]
+name = "pipe"
+version = "2.0"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version == '3.7.*'",
+]
+sdist = { url = "https://files.pythonhosted.org/packages/ee/63/e03c4a74314b2735d83e752a2c6d3a01ab7a72cca6cde98abe102d9db21a/pipe-2.0.tar.gz", hash = "sha256:a1cf3f29f98576b7e6552231142bc711e8dd324513a2c4525fc68c33f47fabad", size = 9252, upload-time = "2022-05-23T07:27:20.425Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d5/e4/8d531d2eda595b491c4933174f8b2b307af9b7523d4a99df5f9277ecbc90/pipe-2.0-py3-none-any.whl", hash = "sha256:12dc5baae854843d0fa8ab674ab555e58cc703eb64d8bf86da8db46b7115d07c", size = 8848, upload-time = "2022-05-23T07:27:18.137Z" },
+]
+
+[[package]]
+name = "pipe"
+version = "2.2"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.8'",
+]
+sdist = { url = "https://files.pythonhosted.org/packages/53/37/aef2cba01787ad8bd266705a95c23db0e9d0b7cd0e01582c969143892655/pipe-2.2.tar.gz", hash = "sha256:6a253198e3bc542ffaf0a4222376586bce8583b27a9ddbc2cfbaa554c049230d", size = 10456, upload-time = "2024-04-04T06:37:17.686Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1f/21/96f1508f67fadb4ab7e5df7c3389e4a2f03cba92f62846f99f6301cf0735/pipe-2.2-py3-none-any.whl", hash = "sha256:0a5c3202ff35122f69a34ccbd40c9658646f033cc941055304fe8bfa7e13376e", size = 9655, upload-time = "2024-04-04T06:37:16.383Z" },
+]
+
+[[package]]
+name = "question-3"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "pipe", version = "1.6.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.7'" },
+    { name = "pipe", version = "2.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.7.*'" },
+    { name = "pipe", version = "2.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.8'" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "pipe", specifier = ">=1.6.0" }]
